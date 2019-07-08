@@ -12,12 +12,9 @@ public class ObjetoHTTP implements Serializable {
     protected String NOMBRE;
 
 
-    ObjetoHTTP(){
 
+    public ObjetoHTTP() {
     }
-
-
-
 
 
 }

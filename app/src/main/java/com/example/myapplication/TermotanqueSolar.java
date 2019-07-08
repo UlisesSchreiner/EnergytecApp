@@ -41,14 +41,15 @@ public class TermotanqueSolar extends ObjetoHTTP {
 
 
 
+
     TermotanqueSolar(String url, final Context context, String nombre, int tipo)
     {
-            TIPO = tipo;
+        TIPO = tipo;
             NOMBRE = nombre;
             URL = url;
-            int intentos = 0;
 
-         //   do {
+
+
 
 
 
@@ -114,11 +115,10 @@ public class TermotanqueSolar extends ObjetoHTTP {
 
 
                 colaSolicitudes.add(sRequest);
-                intentos ++;
 
 
 
-           // } while (NOMBRE == "");
+
 
 
     }
