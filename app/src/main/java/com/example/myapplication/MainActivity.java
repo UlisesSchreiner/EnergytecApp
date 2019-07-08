@@ -26,6 +26,9 @@ import androidx.annotation.NonNull;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -51,9 +54,11 @@ public class MainActivity extends AppCompatActivity {
     final ArrayList <ObjetoHTTP> listaEquipos = new ArrayList<ObjetoHTTP>();
 
     private ProgressBar progres;
-    private TextView mTextMessage;
+    private TextView mTextMessage, errorText;
     ListView lista;
-
+    private ImageView error;
+    private Button errorBoton;
+    private ImageButton resfreshBoton, addBoton;
     //++++++++++++++++//
 
 
@@ -86,10 +91,13 @@ public class MainActivity extends AppCompatActivity {
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
                    //++++++++++++//
 
-
-
+        error = (ImageView)findViewById(R.id.error);
         progres = (ProgressBar)findViewById(R.id.progressBar);
         lista = (ListView) findViewById(R.id.lvLista);
+        errorText = (TextView)findViewById(R.id.errorText);
+        errorBoton = (Button)findViewById(R.id.errorBoton);
+        resfreshBoton = (ImageButton)findViewById(R.id.refreshbuton);
+        addBoton = (ImageButton) findViewById(R.id.addBoton);
 
         new Task1().execute("holaa");
 
@@ -97,8 +105,6 @@ public class MainActivity extends AppCompatActivity {
         lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-
 
                 switch (listaEquipos.get(position).TIPO)
                 {
@@ -117,7 +123,36 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-    }
+        errorBoton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listaEquipos.clear();
+                new Task1().execute("holaa");
+            }
+        });
+
+
+        resfreshBoton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listaEquipos.clear();
+                new Task1().execute("holaa");
+            }
+        });
+
+        addBoton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent addDevice = new Intent(context, addDevice.class);
+                startActivity(addDevice);
+
+            }
+        });
+
+        }
+
+
 
 
     class Task1 extends AsyncTask<String, Void, String>
@@ -127,13 +162,15 @@ public class MainActivity extends AppCompatActivity {
         protected void onPreExecute()
         {
             progres.setVisibility(View.VISIBLE);
+            error.setVisibility(View.INVISIBLE);
+            errorBoton.setVisibility(View.INVISIBLE);
+            errorText.setVisibility(View.INVISIBLE);
         }
 
         @Override
         protected String doInBackground(String... strings) {
 
 
-               //   escanerRedDos();
                 EscanearRed();
 
             return null;
@@ -144,12 +181,13 @@ public class MainActivity extends AppCompatActivity {
         protected void onPostExecute(String s)
         {
 
-
-            lista.setAdapter(new Adaptador(context, listaEquipos));
-
+            if(listaEquipos.size() > 0) {
+                lista.setAdapter(new Adaptador(context, listaEquipos));
+            }else {error.setVisibility(View.VISIBLE);
+                   errorBoton.setVisibility(View.VISIBLE);
+                errorText.setVisibility(View.VISIBLE);
+            }
             progres.setVisibility(View.INVISIBLE);
-
-
 
         }
 
@@ -159,54 +197,60 @@ public class MainActivity extends AppCompatActivity {
 
     private void EscanearRed() {         // -> mejorar el algoritmo, no parcea el json aveces
 
-        for (int x = 2; x < 254; x++) {
-            String num = "" + x;
-            final String url = "http://192.168.1." + num + "/";
+
+        for (int i = 0; i < 2; i++){
+            String num0 = "" + i;
+
+            for (int x = 2; x < 254; x++) {
+                String num = "" + x;
+                final String url = "http://192.168." + num0 + "." + num + "/";
 
 
-            StringRequest sRequest = new StringRequest(Request.Method.GET, url,
-                    new Response.Listener<String>() {
-                        @Override
-                        public void onResponse(String respuesta) {
+                StringRequest sRequest = new StringRequest(Request.Method.GET, url,
+                        new Response.Listener<String>() {
+                            @Override
+                            public void onResponse(String respuesta) {
 
-                            Toast.makeText(context, respuesta, Toast.LENGTH_LONG).show();
+                             Toast.makeText(context, respuesta, Toast.LENGTH_LONG).show();
 
-                            try {
-                                JSONObject reader = new JSONObject(respuesta);
+                             try {
+                                    JSONObject reader = new JSONObject(respuesta);
 
-                                int tipo = reader.getInt("Dispositivo");
-                                String nombre =  reader.getString("Nombre");
+                                    int tipo = reader.getInt("Dispositivo");
+                                    String nombre = reader.getString("Nombre");
 
-                                switch (tipo)
-                                {
+                                    switch (tipo) {
 
-                                    case 1: listaEquipos.add(new TermotanqueSolar(url, context, nombre, tipo));
-                                    break;
-                                    default: Toast.makeText(MainActivity.this, "error de switch ESCANEAR RED", Toast.LENGTH_LONG).show();
-                                    break;
+                                        case 1:
+                                            listaEquipos.add(new TermotanqueSolar(url, context, nombre, tipo));
+                                            break;
+                                      default:
+                                            Toast.makeText(MainActivity.this, "error de switch ESCANEAR RED", Toast.LENGTH_LONG).show();
+                                            break;
+                                    }
+
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                    Toast.makeText(MainActivity.this, "error de parcear json", Toast.LENGTH_LONG).show();
                                 }
 
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                                Toast.makeText(MainActivity.this, "error de parcear json", Toast.LENGTH_LONG).show();
                             }
+                        },
+                        new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                //Toast.makeText(MainActivity.this, error.toString(), Toast.LENGTH_LONG).show();
 
-                        }
-                    },
-                    new Response.ErrorListener() {
-                        @Override
-                        public void onErrorResponse(VolleyError error) {
-                            //Toast.makeText(MainActivity.this, error.toString(), Toast.LENGTH_LONG).show();
+                            }
+                        });
+                sRequest.setRetryPolicy(new DefaultRetryPolicy(
+                        50000,
+                        DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                        DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
 
-                        }
-                    });
-            sRequest.setRetryPolicy(new DefaultRetryPolicy(
-                    50000,
-                    DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
-                    DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-
-            RequestQueue colaSolicitudes = Volley.newRequestQueue(this);
-            colaSolicitudes.add(sRequest);
+                RequestQueue colaSolicitudes = Volley.newRequestQueue(this);
+                colaSolicitudes.add(sRequest);
+            }
         }
     }
 

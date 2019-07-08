@@ -28,7 +28,7 @@ public class VisorTermotanque extends AppCompatActivity implements View.OnClickL
     // private ImageButton botonManual, botonUmbralUno, botonUmbralDos;
     private ProgressBar progreVerde;
     private byte contadorRefrescar = 2;
-
+    private boolean estadoActividad = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,8 +116,21 @@ public class VisorTermotanque extends AppCompatActivity implements View.OnClickL
             }
         });
 
+        estadoActividad = true;
         new Task1().execute("holaa");
+    }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+        estadoActividad = false;
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        estadoActividad = true;
+        new Task1().execute("holaa");
     }
 
     @Override
@@ -222,12 +235,12 @@ public class VisorTermotanque extends AppCompatActivity implements View.OnClickL
                     refresh();
                 } catch (Exception e) {
                 }
-                // ->  ATENCION: Averiguar como se hace esto bien.
-                try {
-                    new Task1().execute("holaa");
-                } catch (Exception e) {
+                if (estadoActividad == true) {
+                    try {
+                        new Task1().execute("holaa");
+                    } catch (Exception e) {
+                    }
                 }
-
             contadorRefrescar ++;
             if(contadorRefrescar > 4){contadorRefrescar = 2;}
             String a = "" + contadorRefrescar;
