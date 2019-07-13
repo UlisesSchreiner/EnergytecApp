@@ -11,9 +11,9 @@
         android:id="@+id/Temperatura"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="128dp"
-        android:layout_marginEnd="140dp"
-        android:layout_marginRight="140dp"
+        android:layout_marginTop="124dp"
+        android:layout_marginEnd="132dp"
+        android:layout_marginRight="132dp"
         android:text="00"
         android:textColor="#54ee18"
         android:textSize="50sp"
@@ -64,28 +64,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline9"
         app:srcCompat="@drawable/flecha" />
-
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="120dp"
-        android:layout_marginEnd="344dp"
-        android:layout_marginRight="344dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/poweroff" />
-
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="180dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/poweron" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline5"
@@ -281,9 +259,9 @@
 
     <EditText
         android:id="@+id/tempObjUmbralUno"
-        android:layout_width="67dp"
-        android:layout_height="38dp"
-        android:layout_marginTop="68dp"
+        android:layout_width="68dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="60dp"
         android:layout_marginEnd="88dp"
         android:layout_marginRight="88dp"
         android:ems="10"
@@ -399,5 +377,72 @@
         android:inputType="numberSigned"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline9" />
+
+    <ImageView
+        android:id="@+id/imageTimeBlack"
+        android:layout_width="41dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="208dp"
+        android:layout_marginLeft="208dp"
+        android:layout_marginTop="220dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/timeblack" />
+
+    <ImageView
+        android:id="@+id/imageTimeGrey"
+        android:layout_width="41dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="208dp"
+        android:layout_marginLeft="208dp"
+        android:layout_marginTop="220dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/timegreey" />
+
+    <ImageView
+        android:id="@+id/imageViewHeating"
+        android:layout_width="41dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="220dp"
+        android:layout_marginEnd="220dp"
+        android:layout_marginRight="220dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/heating" />
+
+    <ImageView
+        android:id="@+id/imageViewNOHeating"
+        android:layout_width="41dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="220dp"
+        android:layout_marginEnd="220dp"
+        android:layout_marginRight="220dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/heatingdos" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="188dp"
+        android:layout_marginEnd="148dp"
+        android:layout_marginRight="148dp"
+        android:text="Grados Centigrados"
+        android:textColor="#54ee18"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/imageButtonConfig"
+        android:layout_width="59dp"
+        android:layout_height="59dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/config" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

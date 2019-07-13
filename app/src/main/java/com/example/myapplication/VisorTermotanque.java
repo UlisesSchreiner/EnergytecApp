@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -27,6 +28,7 @@ public class VisorTermotanque extends AppCompatActivity implements View.OnClickL
     private Switch SwitchEstadoManual, SwitchSuperUmbrales, SwitchEstadoUmbralUno, SwitchEstadoUmbralDos;
     // private ImageButton botonManual, botonUmbralUno, botonUmbralDos;
     private ProgressBar progreVerde;
+    private ImageView imageHeat, imageNoHeat, imageTimeBlack, imageTimeGrey;
     private byte contadorRefrescar = 2;
     private boolean estadoActividad = true;
 
@@ -47,6 +49,10 @@ public class VisorTermotanque extends AppCompatActivity implements View.OnClickL
         SwitchSuperUmbrales = (Switch) findViewById(R.id.switchEstSupUmbrales);
         SwitchEstadoUmbralUno = (Switch) findViewById(R.id.switchEstUmbralUno);
         SwitchEstadoUmbralDos = (Switch) findViewById(R.id.switchEstUmbralDos);
+        imageHeat = (ImageView) findViewById(R.id.imageViewHeating);
+        imageNoHeat = (ImageView) findViewById(R.id.imageViewNOHeating);
+        imageTimeBlack = (ImageView) findViewById(R.id.imageTimeBlack);
+        imageTimeGrey = (ImageView) findViewById(R.id.imageTimeGrey);
 
 
         progreVerde = (ProgressBar) findViewById(R.id.progressVerde);
@@ -55,6 +61,7 @@ public class VisorTermotanque extends AppCompatActivity implements View.OnClickL
         findViewById(R.id.manual).setOnClickListener(this);
         findViewById(R.id.umbralUno).setOnClickListener(this);
         findViewById(R.id.umbralDos).setOnClickListener(this);
+        findViewById(R.id.imageButtonConfig).setOnClickListener(this);
 
         Bundle objetoEnviado = getIntent().getExtras();
 
@@ -160,6 +167,9 @@ public class VisorTermotanque extends AppCompatActivity implements View.OnClickL
                 Toast.makeText(context, aEnviar3, Toast.LENGTH_LONG).show();
                 Objeto.SetParameters(context, aEnviar3);
                 break;
+            case R.id.imageButtonConfig:
+                Toast.makeText(context, "boton", Toast.LENGTH_LONG).show();
+                break;
 
         }
     }
@@ -179,6 +189,22 @@ public class VisorTermotanque extends AppCompatActivity implements View.OnClickL
 
         TempObjUmbralUno.setText(Objeto.getTempObjUmbral1());
         TempObjUmbralDos.setText(Objeto.getTempObjUmbral2());
+
+        if(Objeto.getEstCalefactor()){
+            imageHeat.setVisibility(View.VISIBLE);
+            imageNoHeat.setVisibility(View.INVISIBLE);
+        } else {
+            imageHeat.setVisibility(View.INVISIBLE);
+            imageNoHeat.setVisibility(View.VISIBLE);
+        }
+
+        if(Objeto.getEstadoSupUmbrales() == 1){
+            imageTimeBlack.setVisibility(View.VISIBLE);
+            imageTimeGrey.setVisibility(View.INVISIBLE);
+        } else {
+            imageTimeBlack.setVisibility(View.INVISIBLE);
+            imageTimeGrey.setVisibility(View.VISIBLE);
+        }
 
         if(contadorRefrescar >= 2) {
         if(Objeto.getEstadoSist() == 1){SwitchEstadoManual.setChecked(true);}else {SwitchEstadoManual.setChecked(false);}
@@ -235,7 +261,7 @@ public class VisorTermotanque extends AppCompatActivity implements View.OnClickL
                     refresh();
                 } catch (Exception e) {
                 }
-                if (estadoActividad == true) {
+                if (estadoActividad) {
                     try {
                         new Task1().execute("holaa");
                     } catch (Exception e) {
@@ -244,7 +270,7 @@ public class VisorTermotanque extends AppCompatActivity implements View.OnClickL
             contadorRefrescar ++;
             if(contadorRefrescar > 4){contadorRefrescar = 2;}
             String a = "" + contadorRefrescar;
-            Toast.makeText(context, a, Toast.LENGTH_LONG).show();
+
         }
 
 

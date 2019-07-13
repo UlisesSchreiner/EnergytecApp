@@ -44,13 +44,9 @@ public class TermotanqueSolar extends ObjetoHTTP {
 
     TermotanqueSolar(String url, final Context context, String nombre, int tipo)
     {
-        TIPO = tipo;
+            TIPO = tipo;
             NOMBRE = nombre;
             URL = url;
-
-
-
-
 
 
              final RequestQueue colaSolicitudes = Volley.newRequestQueue(context);
@@ -284,8 +280,11 @@ public double getTempDouble()
         return res;
     }
 
-    public String getEstCalefactor() {
-        String res = "" + estCalefactor;
+    public boolean getEstCalefactor() {
+        boolean res = false;
+        if(estCalefactor == 1){
+            res = true;
+        } else {res = false;}
         return res;
     }
 
