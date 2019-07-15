@@ -3,6 +3,7 @@ package com.example.myapplication;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Editable;
@@ -18,7 +19,7 @@ import android.widget.Toast;
 
 import static java.lang.Thread.sleep;
 
-public class addDevice extends AppCompatActivity {
+public class addDevice extends AppCompatActivity implements AddDeviceFragment.OnFragmentInteractionListener {
 
     final Context context = this;
 
@@ -31,6 +32,7 @@ public class addDevice extends AppCompatActivity {
     EditText name, ssid, pass;
     ImageButton buttonName;
 
+    AddDeviceFragment addDeviceFragment;
 
 
     @Override
@@ -47,6 +49,10 @@ public class addDevice extends AppCompatActivity {
         ssid = (EditText) findViewById(R.id.editTextSsid);
         pass = (EditText) findViewById(R.id.editTextPass);
         progressABM = (ProgressBar) findViewById(R.id.progressABM);
+
+        addDeviceFragment = new AddDeviceFragment();
+
+        getSupportFragmentManager().beginTransaction().add(R.id.contenedorFragment,addDeviceFragment).commit();
 
         escanear.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,6 +99,11 @@ public class addDevice extends AppCompatActivity {
                 progressABM.setVisibility(View.INVISIBLE);
             }
         } catch (Exception e){}
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
     }
 
     class Task1 extends AsyncTask<String, Void, String> // -> Obtiene mal las credenciales de los edit text
