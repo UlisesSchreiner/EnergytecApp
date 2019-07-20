@@ -87,7 +87,10 @@ public class AddDeviceFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                textViewUno.setText("cerar acrividad");
+                    Fragment fragment = getFragmentManager().findFragmentById(R.id.contenedorFragment);
+
+                ((addDevice) getActivity()).getSupportFragmentManager().beginTransaction().remove(fragment).commit();
+
             }
         });
 

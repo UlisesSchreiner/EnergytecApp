@@ -2,17 +2,27 @@ package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
-public class VisorTempAndHumSensor extends AppCompatActivity {
+import static java.lang.Thread.sleep;
 
+public class VisorTempAndHumSensor extends AppCompatActivity implements View.OnClickListener{
+
+
+    final Context context = this;
     TempAndHumSensor Objeto = null;
 
    ProgressBar progressTemp, progresHum;
-    TextView Temperatura, Humedad;
+    TextView Temperatura, Humedad, CaliTemp, CalibHum;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,9 +35,11 @@ public class VisorTempAndHumSensor extends AppCompatActivity {
         progressTemp = (ProgressBar) findViewById(R.id.progressVerdevsh2);
         progressTemp.setProgress(5);
 
-
+        CaliTemp = (TextView) findViewById(R.id.textViewCalTemp);
+        CalibHum = (TextView) findViewById(R.id.textViewHum);
         Temperatura = (TextView) findViewById(R.id.textViewTemp);
         Humedad = (TextView) findViewById(R.id.textViewHum);
+
 
         Bundle objetoEnviado = getIntent().getExtras();
 
@@ -37,11 +49,14 @@ public class VisorTempAndHumSensor extends AppCompatActivity {
 
         }
 
-setProgressH(Objeto.getHumedad());
-        setProgressT(Objeto.getTemperatura());
 
-        Temperatura.setText(Objeto.getStringTem());
-        Humedad.setText(Objeto.getStringHum());
+        findViewById(R.id.buttonPlusTemp).setOnClickListener(this);
+        findViewById(R.id.buttonLessTemp).setOnClickListener(this);
+        findViewById(R.id.buttonPlusHum).setOnClickListener(this);
+        findViewById(R.id.buttonLessHum).setOnClickListener(this);
+
+        refresh();
+        new VisorTempAndHumSensor.Task1().execute("holaa");
 
     }
 
@@ -78,5 +93,78 @@ setProgressH(Objeto.getHumedad());
         if(nProgreso < 0) {progresHum.setProgress(1);}
     }
 
+
+    void refresh(){
+
+        setProgressH(Objeto.getHumedad());
+        setProgressT(Objeto.getTemperatura());
+
+        Temperatura.setText(Objeto.getStringTem());
+        Humedad.setText(Objeto.getStringHum());
+        CaliTemp.setText(Objeto.getStringTem());
+        CalibHum.setText(Objeto.getStringHum());
+
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.buttonPlusTemp:
+                Toast.makeText(context, "plus temp", Toast.LENGTH_LONG).show();
+                break;
+            case R.id.buttonLessTemp:
+                Toast.makeText(context, "less temp", Toast.LENGTH_LONG).show();
+                break;
+            case R.id.buttonPlusHum:
+                Toast.makeText(context, "plus hum", Toast.LENGTH_LONG).show();
+                break;
+            case R.id.buttonLessHum:
+                Toast.makeText(context, "less temp", Toast.LENGTH_LONG).show();
+                break;
+            }
+
+        }
+
+
+
+    class Task1 extends AsyncTask<String, Void, String>
+    {
+
+        @Override
+        protected void onPreExecute()
+        {
+
+        }
+
+        @Override
+        protected String doInBackground(String... strings) {
+
+            try {
+                sleep(5000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String s)
+        {
+
+            try {
+                refresh();
+            } catch (Exception e) {
+            }
+
+                try {
+                    new VisorTempAndHumSensor.Task1().execute("holaa");
+                } catch (Exception e) {
+                }
+
+        }
+
+
+    }
 
 }

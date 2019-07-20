@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".addDevice">
+
+
 
 
     <TextView
@@ -19,25 +22,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/buttonEscan"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="156dp"
-        android:layout_marginRight="156dp"
-        android:layout_marginBottom="60dp"
-        android:text="ESCANEAR"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/visorObjeto"
-        android:layout_width="414dp"
-        android:layout_height="410dp"
+        android:layout_width="416dp"
+        android:layout_height="527dp"
         android:layout_marginTop="116dp"
         android:background="#D8F6CE"
         app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="-2dp">
+        tools:layout_editor_absoluteX="0dp">
+
 
         <EditText
             android:id="@+id/editTextName"
@@ -103,9 +97,9 @@
             android:id="@+id/editTextSsid"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginBottom="92dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginBottom="180dp"
             android:ems="10"
             android:inputType="textPersonName"
             android:text="ssid"
@@ -118,7 +112,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
-            android:layout_marginBottom="32dp"
+            android:layout_marginBottom="120dp"
             android:ems="10"
             android:inputType="textPassword"
             android:text="Password"
@@ -129,9 +123,9 @@
             android:id="@+id/buttonConectar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="52dp"
-            android:layout_marginRight="52dp"
-            android:layout_marginBottom="52dp"
+            android:layout_marginEnd="56dp"
+            android:layout_marginRight="56dp"
+            android:layout_marginBottom="144dp"
             android:text="CONECTAR"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
@@ -152,20 +146,34 @@
             style="?android:attr/progressBarStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="188dp"
-            android:layout_marginRight="188dp"
-            android:layout_marginBottom="168dp"
+            android:layout_marginEnd="184dp"
+            android:layout_marginRight="184dp"
+            android:layout_marginBottom="224dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
-        <FrameLayout
-            android:id="@+id/contenedorFragment"
-            android:layout_width="411dp"
-            android:layout_height="758dp"
-            tools:layout_editor_absoluteX="1dp">
+        <Button
+            android:id="@+id/buttonEscan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="160dp"
+            android:layout_marginRight="160dp"
+            android:layout_marginBottom="44dp"
+            android:text="ESCANEAR"
+            app:layout_constraintBottom_toBottomOf="@+id/visorObjeto"
+            app:layout_constraintEnd_toEndOf="parent" />
 
-        </FrameLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <FrameLayout
+        android:id="@+id/contenedorFragment"
+        android:layout_width="441dp"
+        android:layout_height="841dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+    </FrameLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

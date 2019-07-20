@@ -3,14 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryDark"
+    android:background="@android:color/white"
     tools:context=".AddDeviceFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
 
     <AbsoluteLayout
         android:layout_width="match_parent"
@@ -19,22 +15,117 @@
 
         <TextView
             android:id="@+id/textView17"
-            android:layout_width="277dp"
-            android:layout_height="63dp"
-            android:layout_x="64dp"
-            android:layout_y="232dp"
-            android:text="TextView"
+            android:layout_width="384dp"
+            android:layout_height="wrap_content"
+            android:layout_x="14dp"
+            android:layout_y="101dp"
+            android:text="Instrucciones para conectar un dispostivo nuevo a la red"
             android:textSize="30sp" />
 
         <Button
             android:id="@+id/buttonOK"
+            android:layout_width="133dp"
+            android:layout_height="49dp"
+            android:layout_x="137dp"
+            android:layout_y="723dp"
+            android:background="@drawable/button_redondo"
+            android:shadowColor="#A8A8A8"
+            android:shadowDx="0"
+            android:shadowDy="0"
+            android:shadowRadius="5"
+            android:text="OK"
+            android:textColor="#FFFFFF"
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/textView18"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_x="151dp"
-            android:layout_y="348dp"
-            android:text="OK"
-            tools:layout_editor_absoluteX="135dp"
-            tools:layout_editor_absoluteY="455dp" />
+            android:layout_x="15dp"
+            android:layout_y="195dp"
+            android:text="1- Energize el dispositivo. El parpadeo rapido del led indica que esta en modo accesPoint"
+            tools:layout_editor_absoluteX="79dp"
+            tools:layout_editor_absoluteY="186dp" />
+
+        <TextView
+            android:id="@+id/textView20"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_x="14dp"
+            android:layout_y="269dp"
+            android:text="2- Conecte el Wi-Fi de su smartphone al dispositivo y desactive sus datos moviles"
+            tools:layout_editor_absoluteX="13dp"
+            tools:layout_editor_absoluteY="200dp" />
+
+        <TextView
+            android:id="@+id/textView23"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_x="14dp"
+            android:layout_y="345dp"
+            android:text="La contraseña de fabrica es:"
+            tools:layout_editor_absoluteX="41dp"
+            tools:layout_editor_absoluteY="246dp" />
+
+        <TextView
+            android:id="@+id/textView24"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_x="226dp"
+            android:layout_y="340dp"
+            android:text="12345678"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="283dp" />
+
+        <TextView
+            android:id="@+id/textView25"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_x="10dp"
+            android:layout_y="389dp"
+            android:text="3- Vuelv a a la aplicacion y presione sobre el boton ESCANEAR"
+            tools:layout_editor_absoluteX="38dp"
+            tools:layout_editor_absoluteY="288dp" />
+
+        <TextView
+            android:id="@+id/textView26"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_x="9dp"
+            android:layout_y="443dp"
+            android:text="4- Si la conexion con el dispositivo es exitosa se reflejaran los datos en el cuadro de dialogo"
+            tools:layout_editor_absoluteX="28dp"
+            tools:layout_editor_absoluteY="348dp" />
+
+        <TextView
+            android:id="@+id/textView27"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_x="7dp"
+            android:layout_y="500dp"
+            android:text="5- Ingrese el ssid y password de WiFi"
+            tools:layout_editor_absoluteX="22dp"
+            tools:layout_editor_absoluteY="426dp" />
+
+        <TextView
+            android:id="@+id/textView28"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_x="11dp"
+            android:layout_y="535dp"
+            android:text="6- Presione en el boton  CONECTAR"
+            tools:layout_editor_absoluteX="11dp"
+            tools:layout_editor_absoluteY="449dp" />
+
+        <TextView
+            android:id="@+id/textView29"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_x="5dp"
+            android:layout_y="576dp"
+            android:text="7- Vuelva a la pantalla principal y comprueve que su dispositivo se conecto correctamente"
+            tools:layout_editor_absoluteX="47dp"
+            tools:layout_editor_absoluteY="510dp" />
 
 
     </AbsoluteLayout>
