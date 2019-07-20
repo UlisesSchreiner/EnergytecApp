@@ -15,7 +15,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".addDevice"></activity>
+        <activity android:name=".VisorTempAndHumSensor"></activity>
+        <activity android:name=".addDevice" />
         <activity android:name=".VisorTermotanque" />
         <activity
             android:name=".MainActivity"

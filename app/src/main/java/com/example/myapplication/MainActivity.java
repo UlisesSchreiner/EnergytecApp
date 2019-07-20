@@ -118,6 +118,16 @@ public class MainActivity extends AppCompatActivity {
 
                         startActivity(visorTermotanque);
                         break;
+                    case 2:
+                        Intent visorTempandHum = new Intent(view.getContext(), VisorTempAndHumSensor.class);
+
+                        Bundle bundle2 = new Bundle();
+
+                        bundle2.putSerializable("objeto",listaEquipos.get(position));
+                        visorTempandHum.putExtras(bundle2);
+
+                        startActivity(visorTempandHum);
+                        break;
 
                 }
 
@@ -201,7 +211,7 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 0; i < 2; i++){
             String num0 = "" + i;
 
-            for (int x = 2; x < 254; x++) {
+            for (int x = 2; x < 255; x++) {
                 String num = "" + x;
                 final String url = "http://192.168." + num0 + "." + num + "/";
 
@@ -223,6 +233,9 @@ public class MainActivity extends AppCompatActivity {
 
                                         case 1:
                                             listaEquipos.add(new TermotanqueSolar(url, context, nombre, tipo));
+                                            break;
+                                        case 2:
+                                            listaEquipos.add(new TempAndHumSensor(url, context,nombre,tipo));
                                             break;
                                       default:
                                             Toast.makeText(MainActivity.this, "error de switch ESCANEAR RED", Toast.LENGTH_LONG).show();

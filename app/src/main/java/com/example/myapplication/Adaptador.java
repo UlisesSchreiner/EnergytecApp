@@ -42,6 +42,8 @@ public class Adaptador extends BaseAdapter {
             {
                 case 1: Imagenes.add(R.drawable.termotanque);
                 break;
+                case 2: Imagenes.add(R.drawable.tempandhummidity);
+                break;
                 default: Imagenes.add(R.drawable.error);
                 break;
             }

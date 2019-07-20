@@ -113,10 +113,6 @@ public class TermotanqueSolar extends ObjetoHTTP {
                 colaSolicitudes.add(sRequest);
 
 
-
-
-
-
     }
 
 
