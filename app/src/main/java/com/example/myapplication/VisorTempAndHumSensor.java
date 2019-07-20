@@ -96,6 +96,7 @@ public class VisorTempAndHumSensor extends AppCompatActivity implements View.OnC
 
     void refresh(){
 
+        Objeto.Refresh(context);
         setProgressH(Objeto.getHumedad());
         setProgressT(Objeto.getTemperatura());
 
@@ -110,16 +111,20 @@ public class VisorTempAndHumSensor extends AppCompatActivity implements View.OnC
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.buttonPlusTemp:
+                Objeto.SetParameters(context, "['calTemp':2]");
                 Toast.makeText(context, "plus temp", Toast.LENGTH_LONG).show();
                 break;
             case R.id.buttonLessTemp:
                 Toast.makeText(context, "less temp", Toast.LENGTH_LONG).show();
+                Objeto.SetParameters(context, "['calTemp':1]");
                 break;
             case R.id.buttonPlusHum:
                 Toast.makeText(context, "plus hum", Toast.LENGTH_LONG).show();
+                Objeto.SetParameters(context, "['calHum':2]");
                 break;
             case R.id.buttonLessHum:
                 Toast.makeText(context, "less temp", Toast.LENGTH_LONG).show();
+                Objeto.SetParameters(context, "['calHum':1]");
                 break;
             }
 

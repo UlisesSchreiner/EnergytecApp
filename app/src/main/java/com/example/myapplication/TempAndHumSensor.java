@@ -90,6 +90,7 @@ public class TempAndHumSensor extends ObjetoHTTP {
 
     }
 
+
     public void Refresh(Context context)
     {
 
@@ -153,6 +154,33 @@ public class TempAndHumSensor extends ObjetoHTTP {
 
     }
 
+    public void SetParameters(Context context, String mensaje)
+    {
+        String url = URL + mensaje;
+
+        final RequestQueue colaSolicitudes = Volley.newRequestQueue(context);
+
+        StringRequest sRequest = new StringRequest(Request.Method.GET, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String respuesta) {
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+                });
+
+        sRequest.setRetryPolicy(new DefaultRetryPolicy(
+                5000,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+
+        colaSolicitudes.add(sRequest);
+    }
 
     public double getTemperatura() {
         return temperatura;
