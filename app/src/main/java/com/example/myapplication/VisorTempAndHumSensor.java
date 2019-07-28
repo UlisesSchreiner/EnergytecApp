@@ -36,7 +36,7 @@ public class VisorTempAndHumSensor extends AppCompatActivity implements View.OnC
         progressTemp.setProgress(5);
 
         CaliTemp = (TextView) findViewById(R.id.textViewCalTemp);
-        CalibHum = (TextView) findViewById(R.id.textViewHum);
+        CalibHum = (TextView) findViewById(R.id.textViewCalHum);
         Temperatura = (TextView) findViewById(R.id.textViewTemp);
         Humedad = (TextView) findViewById(R.id.textViewHum);
 
@@ -102,8 +102,8 @@ public class VisorTempAndHumSensor extends AppCompatActivity implements View.OnC
 
         Temperatura.setText(Objeto.getStringTem());
         Humedad.setText(Objeto.getStringHum());
-        CaliTemp.setText(Objeto.getStringTem());
-        CalibHum.setText(Objeto.getStringHum());
+        CaliTemp.setText(Objeto.getCalTempString());
+        CalibHum.setText(Objeto.getCalHumString());
 
     }
 

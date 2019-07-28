@@ -3,6 +3,7 @@ package com.example.myapplication;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -18,7 +19,7 @@ import android.widget.Toast;
 import static java.lang.Thread.currentThread;
 import static java.lang.Thread.sleep;
 
-public class VisorTermotanque extends AppCompatActivity implements View.OnClickListener {
+public class VisorTermotanque extends AppCompatActivity implements fragmentInfoTermo.OnFragmentInteractionListener, View.OnClickListener{
     final Context context = this;
 
     TermotanqueSolar Objeto = null;
@@ -31,6 +32,8 @@ public class VisorTermotanque extends AppCompatActivity implements View.OnClickL
     private ImageView imageHeat, imageNoHeat, imageTimeBlack, imageTimeGrey;
     private byte contadorRefrescar = 2;
     private boolean estadoActividad = true;
+
+    fragmentInfoTermo fragmento;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,10 +61,13 @@ public class VisorTermotanque extends AppCompatActivity implements View.OnClickL
         progreVerde = (ProgressBar) findViewById(R.id.progressVerde);
         progreVerde.setProgress(5);
 
+
+
         findViewById(R.id.manual).setOnClickListener(this);
         findViewById(R.id.umbralUno).setOnClickListener(this);
         findViewById(R.id.umbralDos).setOnClickListener(this);
         findViewById(R.id.imageButtonConfig).setOnClickListener(this);
+        findViewById(R.id.imageButtonInfo).setOnClickListener(this);
 
         Bundle objetoEnviado = getIntent().getExtras();
 
@@ -125,6 +131,8 @@ public class VisorTermotanque extends AppCompatActivity implements View.OnClickL
 
         estadoActividad = true;
         new Task1().execute("holaa");
+
+
     }
 
     @Override
@@ -169,6 +177,10 @@ public class VisorTermotanque extends AppCompatActivity implements View.OnClickL
                 break;
             case R.id.imageButtonConfig:
                 Toast.makeText(context, "boton", Toast.LENGTH_LONG).show();
+                break;
+            case R.id.imageButtonInfo:
+                fragmento = new fragmentInfoTermo();
+                getSupportFragmentManager().beginTransaction().add(R.id.fragmentInfoTermoContent,fragmento).commit();
                 break;
 
         }
@@ -230,6 +242,12 @@ public class VisorTermotanque extends AppCompatActivity implements View.OnClickL
             progreVerde.setProgress(70);
         }
         if(nProgreso < 0) {progreVerde.setProgress(1);}
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
+
     }
 
     class Task1 extends AsyncTask<String, Void, String>

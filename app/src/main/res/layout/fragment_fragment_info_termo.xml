@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    tools:context=".fragmentInfoTermo">
+
+    <Button
+        android:id="@+id/buttonOK"
+        android:layout_width="115dp"
+        android:layout_height="wrap_content"
+        android:layout_x="142dp"
+        android:layout_y="723dp"
+        android:background="@drawable/button_redondo"
+        android:shadowColor="#A8A8A8"
+        android:shadowDx="0"
+        android:shadowDy="0"
+        android:shadowRadius="5"
+        android:text="OK"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/textView33"
+        android:layout_width="429dp"
+        android:layout_height="wrap_content"
+        android:layout_x="6dp"
+        android:layout_y="117dp"
+        android:text="Controladora de termotanque solar"
+        android:textSize="24sp"
+        tools:layout_editor_absoluteX="154dp"
+        tools:layout_editor_absoluteY="81dp" />
+
+    <TextView
+        android:id="@+id/textView34"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="118dp"
+        android:layout_y="162dp"
+        android:text="Conexiones terminales"
+        tools:layout_editor_absoluteX="62dp"
+        tools:layout_editor_absoluteY="104dp" />
+
+    <TextView
+        android:id="@+id/textView35"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="29dp"
+        android:layout_y="185dp"
+        android:text="1- 220v N - IN"
+        tools:layout_editor_absoluteX="34dp"
+        tools:layout_editor_absoluteY="158dp" />
+
+    <TextView
+        android:id="@+id/textView36"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="27dp"
+        android:layout_y="212dp"
+        android:text="2- 220 F - IN"
+        tools:layout_editor_absoluteX="20dp"
+        tools:layout_editor_absoluteY="221dp" />
+
+    <TextView
+        android:id="@+id/textView37"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="29dp"
+        android:layout_y="244dp"
+        android:text="3- GND"
+        tools:layout_editor_absoluteX="102dp"
+        tools:layout_editor_absoluteY="289dp" />
+
+    <TextView
+        android:id="@+id/textView38"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="215dp"
+        android:layout_y="250dp"
+        android:text="4- GND"
+        tools:layout_editor_absoluteX="22dp"
+        tools:layout_editor_absoluteY="268dp" />
+
+    <TextView
+        android:id="@+id/textView39"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="210dp"
+        android:layout_y="221dp"
+        android:text="5- 220v - OUT"
+        tools:layout_editor_absoluteX="64dp"
+        tools:layout_editor_absoluteY="333dp" />
+
+    <TextView
+        android:id="@+id/textView40"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="209dp"
+        android:layout_y="194dp"
+        android:text="6- 220v OUT"
+        tools:layout_editor_absoluteX="70dp"
+        tools:layout_editor_absoluteY="347dp" />
+
+
+</AbsoluteLayout>
