@@ -27,7 +27,6 @@ public class VisorTermotanque extends AppCompatActivity implements fragmentInfoT
     private TextView temperatura;
     private EditText tempObj, HoraMinimaUmbralUno, HoraMaximaimaUmbralUno, TempObjUmbralUno, HoraMinimaUmbralDos, HoraMaximaUmbralDos, TempObjUmbralDos;
     private Switch SwitchEstadoManual, SwitchSuperUmbrales, SwitchEstadoUmbralUno, SwitchEstadoUmbralDos;
-    // private ImageButton botonManual, botonUmbralUno, botonUmbralDos;
     private ProgressBar progreVerde;
     private ImageView imageHeat, imageNoHeat, imageTimeBlack, imageTimeGrey;
     private byte contadorRefrescar = 2;
@@ -86,9 +85,9 @@ public class VisorTermotanque extends AppCompatActivity implements fragmentInfoT
                  contadorRefrescar = 0;
                 if (isChecked)
                 {
-                    Objeto.SetParameters(context, "['estadoSist':1]");
+                    Objeto.SetParameters(context, "{\"estadoSist\":1}");
                 } else {
-                    Objeto.SetParameters(context, "['estadoSist':2]");
+                    Objeto.SetParameters(context, "{\"estadoSist\":2}");
                 }
             }
         });
@@ -98,9 +97,9 @@ public class VisorTermotanque extends AppCompatActivity implements fragmentInfoT
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked)
                 {
-                    Objeto.SetParameters(context, "['estadoSupUmbrales':1]");
+                    Objeto.SetParameters(context, "{\"estadoSupUmbrales\":1}");
                 } else {
-                    Objeto.SetParameters(context, "['estadoSupUmbrales':2]");
+                    Objeto.SetParameters(context, "{\"estadoSupUmbrales\":2}");
                 }
             }
         });
@@ -110,9 +109,9 @@ public class VisorTermotanque extends AppCompatActivity implements fragmentInfoT
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked)
                 {
-                    Objeto.SetParameters(context, "['estadoUmbral1':1]");
+                    Objeto.SetParameters(context, "{\"estadoUmbral1\":1}");
                 } else {
-                    Objeto.SetParameters(context, "['estadoUmbral1':2]");
+                    Objeto.SetParameters(context, "{\"estadoUmbral1\":2}");
                 }
             }
         });
@@ -122,9 +121,9 @@ public class VisorTermotanque extends AppCompatActivity implements fragmentInfoT
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked)
                 {
-                    Objeto.SetParameters(context, "['estadoUmbral2':1]");
+                    Objeto.SetParameters(context, "{\"estadoUmbral2\":1}");
                 } else {
-                    Objeto.SetParameters(context, "['estadoUmbral2':2]");
+                    Objeto.SetParameters(context, "{\"estadoUmbral2\":2}");
                 }
             }
         });
@@ -155,7 +154,7 @@ public class VisorTermotanque extends AppCompatActivity implements fragmentInfoT
         {
             case R.id.manual:
                 String temp = tempObj.getText().toString();
-                String temperaturaAenviar = "['tempObj':'" + temp + "']";
+                String temperaturaAenviar = "{\"tempObj\":" + temp + "}";
                 Toast.makeText(context, temperaturaAenviar, Toast.LENGTH_LONG).show();
                 Objeto.SetParameters(context, temperaturaAenviar);
                 break;
@@ -163,7 +162,7 @@ public class VisorTermotanque extends AppCompatActivity implements fragmentInfoT
                 String hminima = HoraMinimaUmbralUno.getText().toString();
                 String hmaxima = HoraMaximaimaUmbralUno.getText().toString();
                 String temp2 = TempObjUmbralUno.getText().toString();
-                String aEnviar = "['HoraMinimaUmbral1':" + hminima + ",'HoraMaximaUmbral1':" + hmaxima + ",'tempObjUmbral1':" + temp2 + "]";
+                String aEnviar = "{\"HoraMinimaUmbral1\":" + hminima + ",\"HoraMaximaUmbral1\":" + hmaxima + ",\"tempObjUmbral1\":" + temp2 + "}";
                 Toast.makeText(context, aEnviar, Toast.LENGTH_LONG).show();
                 Objeto.SetParameters(context, aEnviar);
                 break;
@@ -171,7 +170,7 @@ public class VisorTermotanque extends AppCompatActivity implements fragmentInfoT
                 String hminima2 = HoraMinimaUmbralDos.getText().toString();
                 String hmaxima2 = HoraMaximaUmbralDos.getText().toString();
                 String temp3 = TempObjUmbralDos.getText().toString();
-                String aEnviar3 = "['HoraMinimaUmbral2':" + hminima2 + ",'HoraMaximaUmbral2':" + hmaxima2 + ",'tempObjUmbral2':" + temp3 + "]";
+                String aEnviar3 = "{\"HoraMinimaUmbral2\":" + hminima2 + ",\"HoraMaximaUmbral2\":" + hmaxima2 + ",\"tempObjUmbral2\":" + temp3 + "}";
                 Toast.makeText(context, aEnviar3, Toast.LENGTH_LONG).show();
                 Objeto.SetParameters(context, aEnviar3);
                 break;

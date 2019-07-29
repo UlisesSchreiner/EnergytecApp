@@ -131,7 +131,8 @@ public class VisorTempAndHumSensor extends AppCompatActivity implements View.OnC
                 Objeto.SetParameters(context, "['calHum':1]");
                 break;
             case R.id.imageButtonConfig:
-                Toast.makeText(context, "less temp", Toast.LENGTH_LONG).show();
+                //Toast.makeText(context, "posteo", Toast.LENGTH_LONG).show();
+                Objeto.RealizarPost(context, "{\"ssid\":\"WIFI lcdtm!\"}");
                 break;
             case R.id.imageButtonInfo:
                 fragmento = new Fragment_TYH_info();
