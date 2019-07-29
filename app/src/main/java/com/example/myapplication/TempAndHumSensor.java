@@ -209,4 +209,7 @@ public class TempAndHumSensor extends ObjetoHTTP {
         String res = "" + calHum;
         return res;
     }
+
+    
+
 }

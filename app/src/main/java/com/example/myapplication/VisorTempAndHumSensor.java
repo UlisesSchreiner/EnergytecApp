@@ -3,6 +3,7 @@ package com.example.myapplication;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -14,7 +15,7 @@ import android.widget.Toast;
 
 import static java.lang.Thread.sleep;
 
-public class VisorTempAndHumSensor extends AppCompatActivity implements View.OnClickListener{
+public class VisorTempAndHumSensor extends AppCompatActivity implements View.OnClickListener, Fragment_TYH_info.OnFragmentInteractionListener{
 
 
     final Context context = this;
@@ -23,6 +24,7 @@ public class VisorTempAndHumSensor extends AppCompatActivity implements View.OnC
    ProgressBar progressTemp, progresHum;
     TextView Temperatura, Humedad, CaliTemp, CalibHum;
 
+    Fragment_TYH_info fragmento;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +56,8 @@ public class VisorTempAndHumSensor extends AppCompatActivity implements View.OnC
         findViewById(R.id.buttonLessTemp).setOnClickListener(this);
         findViewById(R.id.buttonPlusHum).setOnClickListener(this);
         findViewById(R.id.buttonLessHum).setOnClickListener(this);
+        findViewById(R.id.imageButtonInfo).setOnClickListener(this);
+        findViewById(R.id.imageButtonConfig).setOnClickListener(this);
 
         refresh();
         new VisorTempAndHumSensor.Task1().execute("holaa");
@@ -126,6 +130,13 @@ public class VisorTempAndHumSensor extends AppCompatActivity implements View.OnC
                 Toast.makeText(context, "less temp", Toast.LENGTH_LONG).show();
                 Objeto.SetParameters(context, "['calHum':1]");
                 break;
+            case R.id.imageButtonConfig:
+                Toast.makeText(context, "less temp", Toast.LENGTH_LONG).show();
+                break;
+            case R.id.imageButtonInfo:
+                fragmento = new Fragment_TYH_info();
+                getSupportFragmentManager().beginTransaction().add(R.id.fragmentInfoTempYHum,fragmento).commit();
+                break;
             }
 
         }
@@ -169,6 +180,12 @@ public class VisorTempAndHumSensor extends AppCompatActivity implements View.OnC
 
         }
 
+
+    }
+
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
 
     }
 

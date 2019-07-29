@@ -312,7 +312,7 @@
     </AbsoluteLayout>
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/imageButtonConfig"
         android:layout_width="58dp"
         android:layout_height="62dp"
         android:layout_marginTop="16dp"
@@ -323,7 +323,7 @@
         app:srcCompat="@drawable/config" />
 
     <ImageButton
-        android:id="@+id/imageButton2"
+        android:id="@+id/imageButtonInfo"
         android:layout_width="51dp"
         android:layout_height="53dp"
         android:layout_marginStart="36dp"
@@ -332,5 +332,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/info_icon" />
+
+    <FrameLayout
+        android:id="@+id/fragmentInfoTempYHum"
+        android:layout_width="441dp"
+        android:layout_height="849dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+    </FrameLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
