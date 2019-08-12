@@ -205,7 +205,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    private void EscanearRed() {         // -> mejorar el algoritmo, no parcea el json aveces
+    private void EscanearRed() {         // -> mejorar el algoritmo, si encuentra en la .0 que no escanee la .0 ...
 
 
         for (int i = 0; i < 2; i++){
@@ -213,7 +213,7 @@ public class MainActivity extends AppCompatActivity {
 
             for (int x = 2; x < 255; x++) {
                 String num = "" + x;
-                final String url = "http://192.168." + num0 + "." + num + "/";
+                final String url = "http://192.168." + num0 + "." + num + ":43257/";
 
 
                 StringRequest sRequest = new StringRequest(Request.Method.GET, url,

@@ -86,7 +86,7 @@ public class TermotanqueSolar extends ObjetoHTTP {
                                     ID = (int) reader.get("id");
                                     EstadoPasChange = (int) reader.get("estPassChang");
                                     Hora = (String) reader.get("hora");
-                                    estConexion = (boolean) reader.get("estadoConexion");
+                                   // estConexion = (boolean) reader.get("estadoConexion");
                                     TIPO = (int) reader.get("Dispositivo");
 
                                 } catch (JSONException e) {
@@ -157,7 +157,7 @@ public class TermotanqueSolar extends ObjetoHTTP {
                             ID = (int) reader.get("id");
                             EstadoPasChange = (int) reader.get("estPassChang");
                             Hora = (String) reader.get("hora");
-                            estConexion = (boolean) reader.get("estadoConexion");
+                          //  estConexion = (boolean) reader.get("estadoConexion");
                             TIPO = (int) reader.get("Dispositivo");
 
                         } catch (JSONException e) {
