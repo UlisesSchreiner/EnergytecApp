@@ -89,6 +89,7 @@
         android:layout_x="91dp"
         android:layout_y="-230dp"
         android:text="00"
+        android:textColor="#54ee18"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline11" />
@@ -103,6 +104,7 @@
         android:layout_x="299dp"
         android:layout_y="-230dp"
         android:text="00"
+        android:textColor="#54ee18"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline11" />
@@ -117,6 +119,7 @@
         android:layout_x="75dp"
         android:layout_y="-173dp"
         android:text="°C"
+        android:textColor="#54ee18"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline11" />
@@ -131,6 +134,7 @@
         android:layout_x="280dp"
         android:layout_y="-161dp"
         android:text="%HyT"
+        android:textColor="#54ee18"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline11" />

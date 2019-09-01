@@ -32,7 +32,7 @@ public class Adaptador extends BaseAdapter {
                 String nombre = listObjetos.get(x).NOMBRE;
 
                 if (nombre == null){
-                    Nombres.add("sispositivo desconocido");
+                    Nombres.add("dispositivo desconocido");
                 }else {
                     Nombres.add(nombre);
                 }
@@ -43,6 +43,8 @@ public class Adaptador extends BaseAdapter {
                 case 1: Imagenes.add(R.drawable.termotanque);
                 break;
                 case 2: Imagenes.add(R.drawable.tempandhummidity);
+                break;
+                case 3: Imagenes.add(R.drawable.power);
                 break;
                 default: Imagenes.add(R.drawable.error);
                 break;

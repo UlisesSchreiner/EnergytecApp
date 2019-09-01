@@ -50,6 +50,8 @@ public class addDevice extends AppCompatActivity implements AddDeviceFragment.On
         pass = (EditText) findViewById(R.id.editTextPass);
         progressABM = (ProgressBar) findViewById(R.id.progressABM);
 
+
+
         addDeviceFragment = new AddDeviceFragment();
 
         getSupportFragmentManager().beginTransaction().add(R.id.contenedorFragment,addDeviceFragment).commit();
@@ -65,7 +67,7 @@ public class addDevice extends AppCompatActivity implements AddDeviceFragment.On
             @Override
             public void onClick(View v) {
                 Editable Name = name.getText();
-                String aEnviar = "['ssidAP':'" + Name + "']";
+                String aEnviar = "{\"ssidAP\":\"" + Name + "\"}";
                 Objeto.SetParameters(context, aEnviar);
                 Toast.makeText(context, aEnviar, Toast.LENGTH_LONG).show();
             }
@@ -90,7 +92,7 @@ public class addDevice extends AppCompatActivity implements AddDeviceFragment.On
         connect.setEnabled(state);
     }
 
-    void SetProgress(boolean state)                         // -> los progress crashean !
+    void SetProgress(boolean state)
     {
         try {
             if (state) {
@@ -106,7 +108,7 @@ public class addDevice extends AppCompatActivity implements AddDeviceFragment.On
 
     }
 
-    class Task1 extends AsyncTask<String, Void, String> // -> Obtiene mal las credenciales de los edit text
+    class Task1 extends AsyncTask<String, Void, String>
     {
 
         @Override
@@ -122,7 +124,7 @@ public class addDevice extends AppCompatActivity implements AddDeviceFragment.On
 
 
 
-            Objeto = new NewDevice(context, "http://192.168.4.1");
+            Objeto = new NewDevice(context, "http://192.168.4.1:43257/"); // -> aveces anda, aveces no
 
 
             try {
@@ -137,10 +139,16 @@ public class addDevice extends AppCompatActivity implements AddDeviceFragment.On
         @Override
         protected void onPostExecute(String s)
         {
+            try {
+                sleep(200);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
 
             SetProgress(false);
             if(Objeto.getConnectionStatus())
             {
+
                 DiseabledOrEnabled(true);
                 name.setText(Objeto.NOMBRE);
 
@@ -150,7 +158,16 @@ public class addDevice extends AppCompatActivity implements AddDeviceFragment.On
                         textDevice.setText("Termotanque solar Encontrado");
                         imgDevice.setImageResource(R.drawable.termotanque);
                         break;
-                        default:
+                    case 2:
+                        textDevice.setText("Sensor T&H Encontrado");
+                        imgDevice.setImageResource(R.drawable.tempandhummidity);
+                        break;
+                    case 3:
+                        textDevice.setText("sensor de potencia Encontrado");
+                        imgDevice.setImageResource(R.drawable.power);
+                        break;
+
+                    default:
                             textDevice.setText("No se encontro equipo");
                             break;
                 }
@@ -173,16 +190,17 @@ public class addDevice extends AppCompatActivity implements AddDeviceFragment.On
         }
 
         @Override
-        protected String doInBackground(String... strings) { //-> obtiene mal el string de los campos credenciales
+        protected String doInBackground(String... strings) {
 
             Editable Ssid = ssid.getText();
             Editable Pass = pass.getText();
-            String Aenviar = "['ssid':'" + ssid + "','pass':'" + pass + "']";
-            Objeto.SetParameters(context, Aenviar);
-
+            String prueba = "{\"ssid\":\"" + Ssid + "\",\"pass\":\"" + Pass + "\"}";
+            String Aenviar = "{\"ssid\":\"" + ssid + "\",\"pass\":\"" + pass + "\"}";
+            Objeto.SetParameters(context, prueba);
+            //Toast.makeText(context, "wdwef", Toast.LENGTH_LONG).show();
 
             try {
-                sleep(5000);
+                sleep(4000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -194,8 +212,9 @@ public class addDevice extends AppCompatActivity implements AddDeviceFragment.On
         protected void onPostExecute(String s)
         {
 
-            String aEnviar = "['123':123]";
+            String aEnviar = "{\"123\":123}";
             Objeto.SetParameters(context, aEnviar);
+           // Toast.makeText(context, aEnviar, Toast.LENGTH_LONG).show();
 
         }
 

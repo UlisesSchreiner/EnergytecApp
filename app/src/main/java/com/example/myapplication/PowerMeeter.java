@@ -1,8 +1,6 @@
 package com.example.myapplication;
 
 import android.content.Context;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
@@ -17,20 +15,17 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
-import java.util.HashMap;
-import java.util.Map;
 
-public class TempAndHumSensor extends ObjetoHTTP {
+public class PowerMeeter extends ObjetoHTTP {
 
 
-    private double temperatura, humedad;
-    private int calTemp, calHum;
-    private int ZonaHoraria;
+    private double volt, amper, watt;
+    private int calVolt, calAmper, calWatt;
     private int EstadoPasChange;
     private boolean estConexion;
 
 
-    TempAndHumSensor(String url, final Context context, String nombre, int tipo)
+    PowerMeeter(String url, final Context context, String nombre, int tipo)
     {
         TIPO = tipo;
         NOMBRE = nombre;
@@ -51,22 +46,27 @@ public class TempAndHumSensor extends ObjetoHTTP {
                             JSONObject reader = new JSONObject(respuesta);
 
                             try {
-                                temperatura = (double) reader.get("temperatura");
+                                volt = (double) reader.get("volt");
                             } catch (Exception e) {
-                                temperatura = (int) reader.getInt("temperatura");
+                                volt = (int) reader.getInt("volt");
                             }
                             try{
-                                humedad = (double) reader.get("humedad");
+                                amper = (double) reader.get("amper");
                             } catch (Exception e){
-                                humedad = (int) reader.getInt("humedad");
+                                amper = (int) reader.getInt("amper");
                             }
-                            calHum = (int) reader.getInt("calHum");
-                            calTemp = (int) reader.getInt("calTemp");
+                            try {
+                                watt = (double) reader.get("watt");
+                            } catch (Exception e) {
+                                watt = (int) reader.getInt("watt");
+                            }
+                            calVolt = (int) reader.getInt("calVolt");
+                            calAmper = (int) reader.getInt("calAmper");
+                            calWatt = (int) reader.getInt("calWatt");
                             NOMBRE = reader.getString("Nombre");
-                            ZonaHoraria = (int) reader.get("ZonaHoraria");
                             ID = (int) reader.get("id");
                             EstadoPasChange = (int) reader.get("estPassChang");
-                            //estConexion = (boolean) reader.get("estadoConexion");
+                            // estConexion = (boolean) reader.get("estadoConexion");
                             TIPO = (int) reader.get("Dispositivo");
 
                         } catch (JSONException e) {
@@ -115,19 +115,24 @@ public class TempAndHumSensor extends ObjetoHTTP {
                             JSONObject reader = new JSONObject(respuesta);
 
                             try {
-                                temperatura = (double) reader.get("temperatura");
+                                volt = (double) reader.get("volt");
                             } catch (Exception e) {
-                                temperatura = (int) reader.getInt("temperatura");
+                                volt = (int) reader.getInt("volt");
                             }
                             try{
-                                humedad = (double) reader.get("humedad");
+                                amper = (double) reader.get("amper");
                             } catch (Exception e){
-                                humedad = (int) reader.getInt("humedad");
+                                amper = (int) reader.getInt("amper");
                             }
-                            calHum = (int) reader.getInt("calHum");
-                            calTemp = (int) reader.getInt("calTemp");
+                            try {
+                                watt = (double) reader.get("watt");
+                            } catch (Exception e) {
+                                watt = (int) reader.getInt("watt");
+                            }
+                            calVolt = (int) reader.getInt("calVolt");
+                            calAmper = (int) reader.getInt("calAmper");
+                            calWatt = (int) reader.getInt("calWatt");
                             NOMBRE = reader.getString("Nombre");
-                            ZonaHoraria = (int) reader.get("ZonaHoraria");
                             ID = (int) reader.get("id");
                             EstadoPasChange = (int) reader.get("estPassChang");
                             //estConexion = (boolean) reader.get("estadoConexion");
@@ -195,34 +200,46 @@ public class TempAndHumSensor extends ObjetoHTTP {
     }
 
 
-    public double getTemperatura() {
-        return temperatura;
+    public double getVolt() {
+        return volt;
     }
 
-    public double getHumedad() {
-        return humedad;
+    public double getAmper() {
+        return amper;
     }
 
-    public String getStringTem(){
-        String res = "" + temperatura;
+    public double getWatt(){
+        return watt;
+    }
+
+    public String getStringVolt(){
+        String res = "" + volt;
         return res;
     }
 
-    public String getStringHum(){
-        String res = "" + humedad;
+    public String getStringAmper(){
+        String res = "" + amper;
         return res;
     }
 
-    public String getCalTempString() {
-        String res = "" + calTemp;
+    public String getStringWatt() {
+        String res = "" + watt;
         return res;
     }
 
-    public String getCalHumString() {
-        String res = "" + calHum;
+    public String getStringCalVolt() {
+        String res = "" + calVolt;
         return res;
     }
 
+    public String getStringCalAmper(){
+        String res = "" + calAmper;
+        return res;
+    }
 
+    public String getStringCalWatt(){
+        String res = "" + calWatt;
+        return res;
+    }
 
 }

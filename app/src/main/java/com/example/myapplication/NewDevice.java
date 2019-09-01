@@ -1,7 +1,9 @@
 package com.example.myapplication;
 
 import android.content.Context;
+import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -12,6 +14,8 @@ import com.android.volley.toolbox.Volley;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.io.UnsupportedEncodingException;
 
 public class NewDevice extends ObjetoHTTP {
 
@@ -66,7 +70,7 @@ public class NewDevice extends ObjetoHTTP {
 
     }
 
-
+/*
     public void SetParameters(Context context, String mensaje)
     {
         String url = URL + mensaje;
@@ -93,6 +97,39 @@ public class NewDevice extends ObjetoHTTP {
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
 
         colaSolicitudes.add(sRequest);
+    }
+*/
+
+
+    public void SetParameters(Context context, final String data)
+    {
+        RequestQueue requestQueue;
+        requestQueue = Volley.newRequestQueue(context);
+        StringRequest postRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+            }
+        })
+        {
+            @Override
+            public String getBodyContentType() { return "application/json; charset=utf-8"; }
+
+            @Override
+            public byte[] getBody() throws AuthFailureError {
+                try {
+                    return data == null ? null : data.getBytes("utf-8");
+                } catch (UnsupportedEncodingException uee) {
+                    return null;
+                }
+            }
+
+        };
+        requestQueue.add(postRequest);
     }
 
 

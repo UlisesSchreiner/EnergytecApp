@@ -3,10 +3,6 @@
     xmlns:dist="http://schemas.android.com/apk/distribution"
     package="com.example.myapplication">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-
-    <dist:module dist:instant="true" />
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -15,7 +11,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".VisorTempAndHumSensor"></activity>
+        <activity android:name=".VisorPowerMeeter"></activity>
+        <activity android:name=".VisorTempAndHumSensor" />
         <activity android:name=".addDevice" />
         <activity android:name=".VisorTermotanque" />
         <activity
@@ -28,5 +25,9 @@
             </intent-filter>
         </activity>
     </application>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <dist:module dist:instant="true" />
 
 </manifest>

@@ -128,6 +128,14 @@ public class MainActivity extends AppCompatActivity {
 
                         startActivity(visorTempandHum);
                         break;
+                    case 3:
+                        Intent visorPowerMeeter = new Intent(view.getContext(), VisorPowerMeeter.class);
+
+                        Bundle bundle3 = new Bundle();
+                        bundle3.putSerializable("objeto", listaEquipos.get(position));
+                        visorPowerMeeter.putExtras(bundle3);
+                        startActivity(visorPowerMeeter);
+                        break;
 
                 }
 
@@ -236,6 +244,9 @@ public class MainActivity extends AppCompatActivity {
                                             break;
                                         case 2:
                                             listaEquipos.add(new TempAndHumSensor(url, context,nombre,tipo));
+                                            break;
+                                        case 3:
+                                            listaEquipos.add(new PowerMeeter(url,context,nombre,tipo));
                                             break;
                                       default:
                                             Toast.makeText(MainActivity.this, "error de switch ESCANEAR RED", Toast.LENGTH_LONG).show();
