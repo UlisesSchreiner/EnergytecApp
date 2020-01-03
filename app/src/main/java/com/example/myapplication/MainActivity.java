@@ -229,7 +229,7 @@ public class MainActivity extends AppCompatActivity {
                             @Override
                             public void onResponse(String respuesta) {
 
-                             Toast.makeText(context, respuesta, Toast.LENGTH_LONG).show();
+                           //  Toast.makeText(context, respuesta, Toast.LENGTH_LONG).show();
 
                              try {
                                     JSONObject reader = new JSONObject(respuesta);

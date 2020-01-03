@@ -169,7 +169,7 @@ public class VisorPowerMeeter extends AppCompatActivity implements View.OnClickL
         protected String doInBackground(String... strings) {
 
             try {
-                sleep(5000);
+                sleep(1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
